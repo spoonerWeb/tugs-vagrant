@@ -12,9 +12,9 @@ then
 
     sudo sed -i.bak '/DocumentRoot \/var\/www\/html/c DocumentRoot \/var\/www\/htdocs' /etc/apache2/sites-available/000-default.conf
 
-    sudo sed -i.bak s/2M/10M/g /etc/php5/apache2/php.ini
-    sudo sed -i.bak s/max_execution_time = 30/max_execution_time = 240/g /etc/php5/apache2/php.ini
-    sudo sed -i.bak s/8M/10M/g /etc/php5/apache2/php.ini
+    sudo sed -i.bak 's/max_execution_time = 30/max_execution_time = 240/' /etc/php5/apache2/php.ini
+    sudo sed -i.bak 's/;always_populate_raw_post_data = -1/always_populate_raw_post_data = -1/' /etc/php5/apache2/php.ini
+    sudo sed -i.bak 's/; max_input_vars = 1000/max_input_vars = 1500/' /etc/php5/apache2/php.ini
 
     service apache2 restart
 fi
