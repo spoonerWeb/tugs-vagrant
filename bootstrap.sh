@@ -3,7 +3,7 @@
 sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password password rootpass'
 sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again password rootpass'
 sudo apt-get update
-sudo apt-get -y install mysql-server-5.5 php5-mysql apache2 php5 php5-gd graphicsmagick wget
+sudo apt-get -y install mysql-server-5.5 php5-mysql apache2 php5 php5-gd graphicsmagick wget curl
 
 if [ ! -h /var/www ]; 
 then 
@@ -29,3 +29,8 @@ ln -s ../typo3_src
 ln -s typo3_src/typo3
 ln -s typo3_src/index.php
 touch FIRST_INSTALL
+
+cd ~
+curl -sS https://getcomposer.org/installer | php
+cd /var/www/typo3_src/
+php ~/composer.phar install
