@@ -2,6 +2,8 @@ tugs-vagrant
 ============
 
 Vagrant config built on TYPO3 usergroup Stuttgart
+* Uses debian jessy as distribution
+* Uses TYPO3 7.5.0 as CMS
 
 
 Installation
@@ -10,8 +12,9 @@ Installation
 1. Install VirtualBox (https://www.virtualbox.org/)
 2. Install vagrant (http://www.vagrantup.com/)
 3. Checkout this repository
-4. Run "vagrant up"
-5. Type "http://192.168.150.5/" in your browser to start the TYPO3 installation
+4. Create a folder "www"
+5. Run "vagrant up"
+6. Type "http://192.168.150.5/" in your browser to start the TYPO3 installation
 
 TYPO3 Installation
 ==================
