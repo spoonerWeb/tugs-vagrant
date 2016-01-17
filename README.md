@@ -3,7 +3,7 @@ tugs-vagrant
 
 Vagrant config built on TYPO3 usergroup Stuttgart
 * Uses debian jessy as distribution
-* Uses TYPO3 7.5.0 as CMS
+* Uses TYPO3 7.6.x as CMS
 
 
 Installation
