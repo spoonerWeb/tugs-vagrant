@@ -21,10 +21,10 @@ fi
 
 cd /var/www/
 mkdir htdocs
-wget -q get.typo3.org/7.5 -O typo3_src-latest.tar.gz
+wget -q get.typo3.org/7.6 -O typo3_src-latest.tar.gz
 tar xzf typo3_src-latest.tar.gz
 rm typo3_src-latest.tar.gz
-mv typo3_src-7.5.0 typo3_src
+mv typo3_src-7.6.2 typo3_src
 cd htdocs
 ln -s ../typo3_src
 ln -s typo3_src/typo3
