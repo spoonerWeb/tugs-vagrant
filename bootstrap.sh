@@ -3,7 +3,7 @@
 sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password password rootpass'
 sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again password rootpass'
 sudo apt-get update
-sudo apt-get -y install mysql-server-5.5 php5-mysql apache2 php5 php5-gd graphicsmagick wget curl
+sudo apt-get -y install mysql-server-5.5 php5-mysql apache2 php5 php5-gd graphicsmagick wget curl git-core
 
 if [ ! -h /var/www ]; 
 then 
@@ -19,19 +19,18 @@ then
     service apache2 restart
 fi
 
-cd /var/www/
+cd ~
+php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php
+php composer-setup.php --filename=composer
+cd /var/www
+git clone git://git.typo3.org/Packages/TYPO3.CMS.git typo3_src
+cd typo3_src
+composer install
+
+cd ..
 mkdir htdocs
-wget -q get.typo3.org/7.6 -O typo3_src-latest.tar.gz
-tar xzf typo3_src-latest.tar.gz
-rm typo3_src-latest.tar.gz
-mv typo3_src-7.6.2 typo3_src
 cd htdocs
-ln -s ../typo3_src
+ln -s ../typo3_src typo3_src
 ln -s typo3_src/typo3
 ln -s typo3_src/index.php
 touch FIRST_INSTALL
-
-cd ~
-curl -sS https://getcomposer.org/installer | php
-cd /var/www/typo3_src/
-php ~/composer.phar install
