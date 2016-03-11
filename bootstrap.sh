@@ -25,7 +25,7 @@ php composer-setup.php --filename=composer
 cd /var/www
 git clone git://git.typo3.org/Packages/TYPO3.CMS.git typo3_src
 cd typo3_src
-composer install
+php composer install
 
 cd ..
 mkdir htdocs
