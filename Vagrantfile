@@ -17,5 +17,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.network "private_network", ip: "192.168.150.5"
 
-  config.vm.synced_folder "www/", "/var/www", :owner => 'vagrant', :group => 'www-data', :mount_options => ['dmode=775,fmode=664']
+  config.vm.synced_folder "www/", "/var/www", :owner => 'vagrant', :group => 'www-data', :mount_options => ['dmode=775,fmode=664'], :create => true
 end
