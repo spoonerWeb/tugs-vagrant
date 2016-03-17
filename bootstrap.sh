@@ -10,7 +10,7 @@ then
 
     a2enmod rewrite
 
-    sudo sed -i.bak '/DocumentRoot \/var\/www\/html/c DocumentRoot \/var\/www\/htdocs' /etc/apache2/sites-available/000-default.conf
+    sudo sed -i.bak '/DocumentRoot \/var\/www\/html/c DocumentRoot \/var\/www\/CmsBaseDistribution\/web' /etc/apache2/sites-available/000-default.conf
 
     sudo sed -i.bak 's/max_execution_time = 30/max_execution_time = 240/' /etc/php5/apache2/php.ini
     sudo sed -i.bak 's/;always_populate_raw_post_data = -1/always_populate_raw_post_data = -1/' /etc/php5/apache2/php.ini
@@ -19,18 +19,12 @@ then
     service apache2 restart
 fi
 
-cd ~
-php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php
-php composer-setup.php --filename=composer
-cd /var/www
-git clone git://git.typo3.org/Packages/TYPO3.CMS.git typo3_src
-cd typo3_src
-php composer install
+curl -Ss https://getcomposer.org/installer | php > /dev/null
+sudo mv composer.phar /usr/bin/composer
+chmod +x /usr/bin/composer
+cd /var/www/
+composer create-project typo3/cms-base-distribution CmsBaseDistribution
+touch /var/www/CmsBaseDistribution/web/FIRST_INSTALL
 
-cd ..
-mkdir htdocs
-cd htdocs
-ln -s ../typo3_src typo3_src
-ln -s typo3_src/typo3
-ln -s typo3_src/index.php
-touch FIRST_INSTALL
+
+
