@@ -12,7 +12,7 @@ Installation
 
 1. Install VirtualBox (https://www.virtualbox.org/)
 2. Install vagrant (http://www.vagrantup.com/)
-3. Checkout this repository
+3. Clone this repository
 4. Run "vagrant up"
 6. Type "http://192.168.150.5/" in your browser to start the TYPO3 installation
 
